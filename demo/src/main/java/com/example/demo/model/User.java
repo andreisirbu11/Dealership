@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import java.util.Optional;
-
 @Entity
 @DynamicInsert
 @DynamicUpdate

@@ -17,7 +17,7 @@ public class UserService {
     public User findByID(Long userID) { return userRepo.findById(userID).get(); }
     public String deleteAll() { userRepo.deleteAll(); return "All users deleted"; }
     public String deleteByID(Long userID) { userRepo.deleteById(userID); return "User with ID = " + userID + " deleted"; }
-    public User updateUserByID(Long userID, @NotNull User userRequest) {
+    public User updateByID(Long userID, @NotNull User userRequest) {
         User foundUser = userRepo.findById(userID).get();
         if(userRequest.getName() != null) {
             foundUser.setName(userRequest.getName());
@@ -33,7 +33,7 @@ public class UserService {
         }
         return userRepo.save(foundUser);
     };
-    public String insertUser(User newUser) {
+    public String insert(User newUser) {
         userRepo.save(newUser); return "User inserted";
     }
 }
