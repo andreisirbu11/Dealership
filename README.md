@@ -24,6 +24,19 @@
     Vehicle - detaliile despre masina de inchiriat
     Order - detalii despre comanda
 
+Clase noi adaugate:
+    - interfata Offer, are 2 metode: discount si increasePrice;
+    - clasa VehicleManagement, creste pretul pentru toate vehiculele din baza de date si adauga un discount la pret pentru brandul dat
+    - clasa Vehicle implementeaza interfata Offer
+
+Functionalitati noi adaugate:
+    - am adaugat 2 endpointuri pentru clasa Vehicle, caut dupa brand
+    - tuturor vehiculele care au brandul dat in request primesc un discount de 10%
+    - tuturor vehiculelor le creste pretul cu 10%
+    - am implementat patternul Observer
+
+
+
 Codul pentru generarea diagramei bazei de date:
  
  

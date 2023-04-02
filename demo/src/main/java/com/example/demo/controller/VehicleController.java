@@ -4,9 +4,9 @@ import com.example.demo.model.Vehicle;
 import com.example.demo.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
+/** Gets data from requets and sends them to Service which will update the database */
 @RestController
 @CrossOrigin
 public class VehicleController {

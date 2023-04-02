@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+/** Vehicle data class, implements Offer interface, comes with 2 new methods: discount and increasePrice */
 @Entity
 @DynamicInsert
 @DynamicUpdate

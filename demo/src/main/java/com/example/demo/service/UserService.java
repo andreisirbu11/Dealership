@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.repository.UserRepo;
 import java.util.List;
 
+/** Does database operations */
 @Service
 public class UserService {
     @Autowired

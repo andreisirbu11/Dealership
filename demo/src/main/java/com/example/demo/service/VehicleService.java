@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/** Does database operations */
 @Service
 public class VehicleService {
     @Autowired
