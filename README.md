@@ -19,23 +19,10 @@
           - poate sa anuleze o inchiriere
     Admin - poate modifica baza de date(ex. sa puna pretul pe o anumita masina)
     
-    Role - rolurile pe care le poate avea un utilizator: admin, buyer
+    Role - rolurile pe care le poate avea un utilizator: admin, client
 
     Vehicle - detaliile despre masina de inchiriat
     Order - detalii despre comanda
-
-Clase noi adaugate:
-    - interfata Offer, are 2 metode: discount si increasePrice;
-    - clasa VehicleManagement, creste pretul pentru toate vehiculele din baza de date si adauga un discount la pret pentru brandul dat
-    - clasa Vehicle implementeaza interfata Offer
-
-Functionalitati noi adaugate:
-    - am adaugat 2 endpointuri pentru clasa Vehicle, caut dupa brand
-    - tuturor vehiculele care au brandul dat in request primesc un discount de 10%
-    - tuturor vehiculelor le creste pretul cu 10%
-    - am implementat patternul Observer
-
-
 
 Codul pentru generarea diagramei bazei de date:
  
@@ -73,3 +60,37 @@ Table Role {
 }
 Ref: Order.(id_user) < User.(id)
 Ref: Order.(id_vehicle) - Vehicle.(id)
+
+	Lista de requesturi:
+		Entitatea role: - getUserRoleById() (returneaza numele rolului pe care il are un anumit user, adminul poate sa faca acest request)
+						- getAllRoles() (returneaza toate rolurile din baza de date)
+						- deleteAllRoles() (sterge toate rolurile din baza de date)
+		Entitatea user: - getAllUsers() {returneaza totii useri, admin request}
+						- getUserById() {returneaza un user dupa id, admin request}
+						- updateById() {modifica entitatea user cu un id dat, ex: cazul in care utilizatorul vrea sa isi modifice adresa de email}
+						- deleteAll() {goleste baza de date de toti userii}
+						- deleteById() {sterge un user dupa id, ex: cazul in care utilizatorul vrea sa isi stearga contul}
+						- insertNewUser() {insereaza un utilizator nou in baza de date, request facut cand un utilizator isi creaza cont}
+		Entitatea vehicle: - getAllVehicles() (returneaza toate vehiculele din baza de date)
+						   - getVehicleById() (returneaza un vehicul dupa id)
+						   - getVehicleByBrand (rerturneaza un vehicul dupa brand)
+						   - getBrandModelName (returneaza lista de vehicule inchiriate de un utilizator) 
+						   - deleteAll() (goleste baza de date de toate vehiculele)
+						   - deleteVehicleById() (sterge un vehicul cu un id dat din baza de date)
+						   - insertNewVehicle() (insereaza un nou vehicul in baza de date)
+						   - updateVehicleById() (modifica un vehicul cu un id dat, ex: adminul vrea sa modifice pretul)
+						   - discount() (aplica discount de 10% la vehicule)
+						   - increasePrice() (creste pretul cu 10% la vehicule)
+		Entitatea rentavehicle: - getAllOrders() (returneaza toate comenzile)
+								- getOrderById() (returneaza o comanda dupa id)
+								- getOrderByUserId (returneaza o comanda dupa id-ul utilizatorului)
+								- getOrderByVehicleId (returneaza o comanda dupa id-ul unui vehicul)
+								- deleteAll() (goleste baza de date de toate comenzile)
+								
+	Schimbari:
+		- pentru tema 3 am eliminat patternul Observer pentru a scapa de complexitatea codului, si am reimplementat metodele de discount si increasePrice
+			cu doua query-uri care actualizeaza in mod direct baza de date(a trebuit scoasa optiunea de safe update din mySQL)
+		- am actualizat javadoc pentru toate clasele din proiect
+		- am testat toate metodele din service-urile fiecarei entitati(nu am avut logica suplimentara de testat, unul din motivele pentru care am eliminat 
+			patternul, mi s-a parut mult mai greu de testat logica)
+		
